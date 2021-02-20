@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;
 
+    public UIManager gameOverMenu;
+
     public float jumpForce;
     public float gravityModifier;
 
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
         playerAudio = GetComponent<AudioSource>();
+        gameOverMenu = GameObject.Find("Canvas").GetComponent<UIManager>();
         
     }
 
@@ -56,6 +59,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Death_b", true);
             anim.SetInteger("DeathType_int", 1);
             playerAudio.PlayOneShot(crashSound, 1.0f);
+            gameOverMenu.deathMenu.SetActive(true);
         }
     }
 }
