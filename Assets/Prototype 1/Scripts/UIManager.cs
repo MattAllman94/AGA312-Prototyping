@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        timerText.text = Time.deltaTime.ToString("F2");
+        timerText.text = Time.unscaledDeltaTime.ToString("F2");
     }
 
 

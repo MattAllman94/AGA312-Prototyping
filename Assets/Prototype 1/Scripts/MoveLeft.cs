@@ -5,13 +5,16 @@ using UnityEngine;
 public class MoveLeft : MonoBehaviour
 {
 
-    private float speed = 20;
+    public float speed = 20;
+    public float maxSpeed = 40;
     private float leftBound = -15;
+    public float currentTime;
     private PlayerController playerControllerScript;
 
     void Start()
     {
-        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>(); 
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+        currentTime = Time.unscaledDeltaTime;
     }
     void Update()
     {
@@ -23,6 +26,14 @@ public class MoveLeft : MonoBehaviour
         if (transform.position.x < leftBound && gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
+        }
+
+        if(speed < maxSpeed)
+        {
+            if(currentTime > 60)
+            {
+                speed += Time.deltaTime;
+            }
         }
 
     }

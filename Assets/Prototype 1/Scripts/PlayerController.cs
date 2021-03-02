@@ -14,12 +14,15 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float gravityModifier;
 
-    public bool isOnGround = true;
+    private bool isOnGround = true;
     public bool gameOver = false;
+    private bool isCrouched = false;
 
     public AudioSource playerAudio;
     public AudioClip jumpSound;
     public AudioClip crashSound;
+
+    BoxCollider boxCollider;
 
     void Start()
     {
@@ -28,18 +31,34 @@ public class PlayerController : MonoBehaviour
         Physics.gravity *= gravityModifier;
         playerAudio = GetComponent<AudioSource>();
         gameOverMenu = GameObject.Find("Canvas").GetComponent<UIManager>();
+        boxCollider = GetComponent<BoxCollider>();
         
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !isCrouched)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
             anim.SetTrigger("Jump_trig");
             dirtParticle.Stop();
             playerAudio.PlayOneShot(jumpSound, 1.0f);
+        }
+
+        if (Input.GetKey(KeyCode.LeftControl) && isOnGround)
+        {
+            boxCollider.size = new Vector3(1, 1.5f, 1);
+            boxCollider.center = new Vector3(0, 0.8f, 1);
+            anim.SetBool("Crouch_b" , true);
+            isCrouched = true;
+        }
+        else if(Input.GetKeyUp(KeyCode.LeftControl) && isCrouched)
+        {
+            boxCollider.size = new Vector3(1, 3, 1);
+            boxCollider.center = new Vector3(0, 1.5f, 1);
+            anim.SetBool("Crouch_b", false);
+            isCrouched = false;
         }
     }
 

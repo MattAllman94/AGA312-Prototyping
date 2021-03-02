@@ -708,7 +708,6 @@ MonoBehaviour:
   gameOverMenu: {fileID: 0}
   jumpForce: 500
   gravityModifier: 1.5
-  isOnGround: 1
   gameOver: 0
   playerAudio: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: 08ab7053d586c458db3774d33c141a4b, type: 3}
@@ -1285,6 +1284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6029e5c6d7ff68f46879202765a53a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 20
+  maxSpeed: 50
+  currentTime: 0
 --- !u!114 &835818923
 MonoBehaviour:
   m_ObjectHideFlags: 0
