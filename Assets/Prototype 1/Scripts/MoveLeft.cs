@@ -2,23 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveLeft : MonoBehaviour
+public class MoveLeft : JMC
 {
 
     public float speed = 20;
     public float maxSpeed = 40;
     private float leftBound = -15;
-    public float currentTime;
-    private PlayerController playerControllerScript;
+ 
+   
 
     void Start()
     {
-        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
-        currentTime = Time.unscaledDeltaTime;
+
     }
     void Update()
     {
-        if(playerControllerScript.gameOver == false)
+
+
+        if(_PC1.gameOver == false)
         {
             transform.Translate(Vector3.left * Time.deltaTime * speed);
         }
@@ -30,7 +31,7 @@ public class MoveLeft : MonoBehaviour
 
         if(speed < maxSpeed)
         {
-            if(currentTime > 60)
+            if(_GM1.currentTime > 20)
             {
                 speed += Time.deltaTime;
             }
