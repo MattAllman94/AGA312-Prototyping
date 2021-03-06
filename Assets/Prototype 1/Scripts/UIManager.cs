@@ -12,6 +12,7 @@ namespace Prototype1
         public GameObject startMenu;
         public GameObject deathMenu;
         public Text timerText;
+        public Text scoreText;
 
         void Start()
         {
@@ -23,6 +24,7 @@ namespace Prototype1
         void Update()
         {
             timerText.text = _GM1.currentTime.ToString("F2");
+            scoreText.text = _GM1.currentTime.ToString("F0");
         }
 
 
