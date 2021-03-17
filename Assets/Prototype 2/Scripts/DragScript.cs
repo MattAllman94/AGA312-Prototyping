@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragScript : MonoBehaviour
+public class DragScript : JMC
 {
-    public int nutrientCount;
+
 
     public Transform worldAnchor;
     
@@ -45,7 +45,7 @@ public class DragScript : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Nutrient"))
         {
-            nutrientCount += 1;
+            _GM2.nutrientCount += 1;
             Destroy(other.gameObject);
         }
     }
