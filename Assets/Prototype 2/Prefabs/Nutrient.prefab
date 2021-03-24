@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 2324211732913293096}
   - component: {fileID: 583700206485596073}
   - component: {fileID: 596532998}
+  - component: {fileID: 85180002092733616}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Nutrient
   m_TagString: Nutrient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,3 +114,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &85180002092733616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447072692642500788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2d1ec42a8ec484e9e5f5b9a33e025c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decay: 5

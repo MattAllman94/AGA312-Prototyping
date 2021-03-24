@@ -7,7 +7,7 @@ public class ColliderScript : JMC
 
     public float fixedScale = 1;
     public GameObject parent;
-    public DragScript drag;
+    public RootScript root;
 
     private void Update()
     {
@@ -17,10 +17,25 @@ public class ColliderScript : JMC
     {
         if (other.gameObject.CompareTag("Nutrient"))
         {
-            drag.LockRoot();
+            root.LockRoot();
             Debug.Log("Collect");
             _SM2.SpawnRoot(this.gameObject);
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Water"))
+        {
+            root.LockRoot();
+
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (root.waterLevel < 50)
+        {
+            root.waterLevel += Time.deltaTime;
+            root.isDrinking = true;
         }
     }
 }

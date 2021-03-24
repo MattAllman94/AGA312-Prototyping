@@ -12,9 +12,13 @@ namespace Prototype2
         public float spawnRate = 2;
 
         public GameObject root;
-        public float rootCount;
+        public float rootCount = 1;
         private float maxRoots = 10;
         public Transform rootSpawnPos;
+
+        public GameObject enemy;
+        public float enemySpawnRate = 10; 
+
 
         void Start()
         {
@@ -25,7 +29,13 @@ namespace Prototype2
         void Update()
         {
             spawnRate -= Time.deltaTime;
+            enemySpawnRate -= Time.deltaTime;
             SpawnNutrient();
+            SpawnEnemy();
+            if(rootCount <= 0)
+            {
+
+            }
         }
 
         void SpawnNutrient()
@@ -34,8 +44,8 @@ namespace Prototype2
             if(spawnRate <= 0)
             {
                 //Vector3 nutrientSpawnPos = SpawnPos();
-                Vector3 nutrientSpawnPos = new Vector3(Random.Range(-10f,10f), Random.Range(-10f, 10f),0);
-                Debug.Log(nutrientSpawnPos);
+                Vector3 nutrientSpawnPos = new Vector3(Random.Range(-9f,9f), Random.Range(-4f, 6f),0);
+                //Debug.Log(nutrientSpawnPos);
                 Instantiate(nutrient, new Vector3(nutrientSpawnPos.x, nutrientSpawnPos.y, 0), transform.rotation);
                 spawnRate = 2;
             }
@@ -46,9 +56,23 @@ namespace Prototype2
             
             if (rootCount < maxRoots)
             {
-                GameObject newRoot = Instantiate(root, rootSpawnPos.position, transform.rotation);
-                newRoot.GetComponentInChildren<DragScript>().worldAnchor = _parent.transform;
+                GameObject newRoot = Instantiate(root, rootSpawnPos.position, transform.rotation, root.transform.parent);
+                newRoot.transform.localScale -= new Vector3(0.05f, 0.05f, 0.05f);
+                newRoot.GetComponentInChildren<RootScript>().worldAnchor = _parent.transform;
                 rootCount += 1;
+            }
+        }
+
+        void SpawnEnemy()
+        {
+            //int rnd = Random.Range(0, spawnPos.Length);
+            if (enemySpawnRate <= 0)
+            {
+                //Vector3 nutrientSpawnPos = SpawnPos();
+                Vector3 enemySpawnPos = new Vector3(Random.Range(12f, 14f), Random.Range(3f, -3.5f), 0);
+                Instantiate(enemy, new Vector3(enemySpawnPos.x, enemySpawnPos.y, 0), enemy.transform.rotation);
+                Debug.Log(enemySpawnPos);
+                enemySpawnRate = 10;
             }
         }
 

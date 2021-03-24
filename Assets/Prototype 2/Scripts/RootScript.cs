@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragScript : JMC
+public class RootScript : JMC
 {
 
     public Transform worldAnchor;
@@ -15,6 +15,9 @@ public class DragScript : JMC
 
     public bool isLocked = false;
 
+    public float waterLevel = 50;
+    public bool isDrinking = false;
+
     void Start()
     {
         initialScale = transform.localScale;
@@ -24,7 +27,7 @@ public class DragScript : JMC
 
     void Update()
     {
-
+        waterLevel -= Time.deltaTime;
     }
 
     void OnMouseDrag()
@@ -43,11 +46,8 @@ public class DragScript : JMC
             Vector3 rotationDirection = (mouseWorldPos - worldAnchor.position);
             transform.up = rotationDirection;
 
-            rootTip.position = mainCamera.ScreenToWorldPoint(mouseScreenPos);
-            
+            rootTip.position = mainCamera.ScreenToWorldPoint(mouseScreenPos);            
         }
-
-      
     }
 
     public void LockRoot()
@@ -56,5 +56,4 @@ public class DragScript : JMC
         worldAnchor = rootTip;
         _SM2.rootSpawnPos = worldAnchor;
     }
-
 }
