@@ -17,7 +17,6 @@ namespace Prototype2
         }
         void Update()
         {
-            int rnd = Random.Range(1, 2);
             transform.Translate(Vector3.up * Time.deltaTime * speed);
 
             if (transform.position.x < leftBound)
