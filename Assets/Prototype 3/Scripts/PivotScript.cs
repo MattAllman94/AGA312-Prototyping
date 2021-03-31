@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PivotScript : JMC
 {
-    public float speed;
+    public float rotateSpeed;
+
 
     void Start()
     {
@@ -16,12 +17,14 @@ public class PivotScript : JMC
     {
         if(Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.forward * speed * Time.deltaTime);
+            transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(-Vector3.forward * speed * Time.deltaTime);
+            transform.Rotate(-Vector3.forward * rotateSpeed * Time.deltaTime);
         }
+
+
     }
 }

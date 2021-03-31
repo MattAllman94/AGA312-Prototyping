@@ -9,6 +9,7 @@ TagManager:
   - Nutrient
   - Root
   - Water
+  - Secondary Camera
   layers:
   - Default
   - TransparentFX

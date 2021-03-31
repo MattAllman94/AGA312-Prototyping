@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
-public class ObstacleMovement : JMC
+public class ObstacleMovement : Singleton<ObstacleMovement>
 {
+    public float currentSpeed;
     public float speed;
     public float posLimit;
+    public Ease ease;
+
 
     void Start()
     {
@@ -21,5 +25,11 @@ public class ObstacleMovement : JMC
             Destroy(gameObject);
             _SM3.currentNumber -= 1;
         }
+    }
+    
+    public void SpeedUp()
+    {
+        DOTween.To(() => speed, x => speed = x, 40, 3).SetEase(ease);
+        currentSpeed = speed;
     }
 }

@@ -11,11 +11,11 @@ namespace Prototype3
         private int obstacleLimit = 50;
         public int currentNumber = 0;
         public float spawnRate;
-        private float currentSpawnRate;
+        public float currentSpawnRate;
 
         public GameObject[] pickup;
         public float pickupSpawnRate;
-        private float currentPickupSpawnRate;
+        public float currentPickupSpawnRate;
 
         void Start()
         {
@@ -36,7 +36,8 @@ namespace Prototype3
             if(currentPickupSpawnRate <= 0)
             {
                 int rnd = Random.Range(0, pickup.Length);
-                Vector3 pickupSpawnPos = new Vector3(Random.Range(-12f, 12f), Random.Range(14f, -12f), 0);
+                //Vector3 pickupSpawnPos = new Vector3(Random.Range(-12f, 12f), Random.Range(14f, -12f), 0);
+                Vector3 pickupSpawnPos = new Vector3(Random.Range(-5f, 5f), Random.Range(4f, -4f), 0);
                 Instantiate(pickup[rnd], new Vector3(pickupSpawnPos.x, pickupSpawnPos.y, 30), transform.rotation);
                 currentPickupSpawnRate = pickupSpawnRate;
             }
@@ -49,6 +50,7 @@ namespace Prototype3
                 if (currentSpawnRate <= 0)
                 {
                     Vector3 obstacleSpawnPos = new Vector3(Random.Range(-13f, 13f), Random.Range(14f, -12f), 0);
+                    //Vector3 obstacleSpawnPos = new Vector3(Random.Range(-5f, 5f), Random.Range(4f, -4f), 0);
                     Instantiate(obstacle, new Vector3(obstacleSpawnPos.x, obstacleSpawnPos.y, 30), transform.rotation);
                     currentSpawnRate = spawnRate;
                     currentNumber += 1;
