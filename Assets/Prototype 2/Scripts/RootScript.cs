@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class RootScript : JMC
 {
@@ -12,11 +13,12 @@ public class RootScript : JMC
     private Camera mainCamera;
     private float camToDist;
     private Vector3 initialScale;
+    public float maxDrag = 2;
 
     public bool isLocked = false;
+    public Color lockedColor;
 
-    public float waterLevel = 50;
-    public bool isDrinking = false;
+
 
     void Start()
     {
@@ -27,7 +29,7 @@ public class RootScript : JMC
 
     void Update()
     {
-        waterLevel -= Time.deltaTime;
+        
     }
 
     void OnMouseDrag()
@@ -55,5 +57,6 @@ public class RootScript : JMC
         isLocked = true;
         worldAnchor = rootTip;
         _SM2.rootSpawnPos = worldAnchor;
+        GetComponent<Renderer>().material.DOColor(lockedColor, 0);
     }
 }

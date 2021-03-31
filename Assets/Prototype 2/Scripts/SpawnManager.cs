@@ -16,6 +16,7 @@ namespace Prototype2
         private float maxRoots = 10;
         public Transform rootSpawnPos;
 
+
         public GameObject enemy;
         public float enemySpawnRate = 10; 
 
@@ -31,11 +32,7 @@ namespace Prototype2
             spawnRate -= Time.deltaTime;
             enemySpawnRate -= Time.deltaTime;
             SpawnNutrient();
-            SpawnEnemy();
-            if(rootCount <= 0)
-            {
-
-            }
+            //SpawnEnemy();
         }
 
         void SpawnNutrient()
@@ -56,11 +53,47 @@ namespace Prototype2
             
             if (rootCount < maxRoots)
             {
-                GameObject newRoot = Instantiate(root, rootSpawnPos.position, transform.rotation, root.transform.parent);
-                newRoot.transform.localScale -= new Vector3(0.05f, 0.05f, 0.05f);
-                newRoot.GetComponentInChildren<RootScript>().worldAnchor = _parent.transform;
-                rootCount += 1;
+                int rnd = Random.Range(1, 3);
+
+                switch(rnd)
+                {
+                    case 1:
+                        GameObject root1 = makeRoot(_parent);
+                        root1.name = "Root 1";
+                        break;
+                    case 2:
+                        GameObject root21 = makeRoot(_parent);
+                        root21.name = "Root 21";
+                        GameObject root22 = makeRoot(_parent);
+                        root22.name = "Root 22";
+                        break;
+                    case 3:
+                        GameObject root31 = makeRoot(_parent);
+                        root31.name = "Root 31";
+                        GameObject root32 = makeRoot(_parent);
+                        root32.name = "Root 32";
+                        GameObject root33 = makeRoot(_parent);
+                        root33.name = "Root 33";
+                        break;
+                }
+                
             }
+        }
+        
+        GameObject makeRoot(GameObject _parent)
+        {
+            Quaternion rootRotation = Quaternion.Euler(0, 0, Random.Range(-90, 90));
+            //Debug.Log(rootRotation);
+
+            //Vector3 offset = new Vector3(0, 1.5f, 0);
+
+            GameObject newRoot = Instantiate(root, rootSpawnPos.position, rootRotation, root.transform.parent);
+            newRoot.transform.localScale -= new Vector3(0.05f, 0.05f, 0.05f);
+            newRoot.GetComponentInChildren<RootScript>().worldAnchor = _parent.transform;
+            
+            rootCount += 1;
+            newRoot.transform.SetParent(_parent.transform);
+            return newRoot;
         }
 
         void SpawnEnemy()

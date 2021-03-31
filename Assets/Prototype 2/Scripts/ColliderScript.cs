@@ -18,7 +18,7 @@ public class ColliderScript : JMC
         if (other.gameObject.CompareTag("Nutrient"))
         {
             root.LockRoot();
-            Debug.Log("Collect");
+            //Debug.Log("Collect");
             _SM2.SpawnRoot(this.gameObject);
             Destroy(other.gameObject);
         }
@@ -32,10 +32,22 @@ public class ColliderScript : JMC
 
     private void OnTriggerStay(Collider other)
     {
-        if (root.waterLevel < 50)
+        if(other.gameObject.GetComponent("Water"))
         {
-            root.waterLevel += Time.deltaTime;
-            root.isDrinking = true;
+            if (_TM.waterLevel < 50)
+            {
+                _TM.waterLevel += Time.deltaTime;
+                _TM.isDrinking = true;
+            }
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.CompareTag("Water"))
+        {
+            _TM.isDrinking = false;
         }
     }
 }

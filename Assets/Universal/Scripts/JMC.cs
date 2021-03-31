@@ -11,6 +11,8 @@ public class JMC : MonoBehaviour
     protected static Prototype1.PlayerController _PC1 { get { return Prototype1.PlayerController.instance; } }
 
     protected static Prototype2.SpawnManager _SM2 { get { return Prototype2.SpawnManager.instance; } }
+
+    protected static TreeManager _TM { get { return TreeManager.instance; } }
     //protected static Prototype2.GameManager _GM2 { get { return Prototype2.GameManager.instance; } }
 
 
