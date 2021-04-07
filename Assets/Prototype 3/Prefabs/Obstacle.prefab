@@ -111,4 +111,4 @@ MonoBehaviour:
   currentSpeed: 15
   speed: 20
   posLimit: -5
-  ease: 5
+  ease: 1

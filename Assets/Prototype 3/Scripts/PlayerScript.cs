@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
 
     public float slideSpeed;
+
     void Update()
     {
 
@@ -33,6 +34,15 @@ public class PlayerScript : MonoBehaviour
                 Vector3 newPos = new Vector3(0, 0.5f, 0);
                 transform.localPosition = newPos;
             }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Obstacle"))
+        {
+            Debug.Log("Game Over");
+            Time.timeScale = 0;
         }
     }
 }

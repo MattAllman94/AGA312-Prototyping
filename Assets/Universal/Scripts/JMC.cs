@@ -84,7 +84,7 @@ public class Singleton<T> : JMC where T : JMC
         }
         else
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }

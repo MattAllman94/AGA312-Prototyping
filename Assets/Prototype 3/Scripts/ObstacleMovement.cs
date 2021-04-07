@@ -26,10 +26,15 @@ public class ObstacleMovement : Singleton<ObstacleMovement>
             _SM3.currentNumber -= 1;
         }
     }
-    
+
     public void SpeedUp()
     {
-        DOTween.To(() => speed, x => speed = x, 40, 3).SetEase(ease);
+        DOTween.To(() => speed, x => speed = x, 40, 3).SetEase(ease).OnUpdate(UpdateSpeed);
+
+    }
+
+    void UpdateSpeed()
+    {
         currentSpeed = speed;
     }
 }
