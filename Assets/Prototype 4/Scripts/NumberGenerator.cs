@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NumberGenerator : JMC
 {
-    
+    public int currentNumber;
     void Start()
     {
         AllocateNumber();
@@ -24,12 +24,15 @@ public class NumberGenerator : JMC
         {
             case 0:
                 _UI4.number.text = "15";
+                currentNumber = 15;
                 break;
             case 1:
                 _UI4.number.text = "40";
+                currentNumber = 40;
                 break;
             case 2:
                 _UI4.number.text = "5";
+                currentNumber = 5;
                 break;
         }
     }

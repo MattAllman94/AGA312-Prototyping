@@ -10,6 +10,7 @@ TagManager:
   - Root
   - Water
   - Secondary Camera
+  - Vial
   layers:
   - Default
   - TransparentFX

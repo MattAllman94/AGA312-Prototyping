@@ -11,6 +11,11 @@ namespace Prototype4
 
         public float lookSpeed = 3;
         Vector2 rotation = Vector2.zero;
+
+        public Transform holdPos;
+        public GameObject vial;
+        bool isHeld;
+
         void Start()
         {
 
@@ -21,6 +26,7 @@ namespace Prototype4
         {
             Movement();
             Look();
+            Interact();
         }
 
         void Movement()
@@ -37,6 +43,48 @@ namespace Prototype4
             rotation.x = Mathf.Clamp(rotation.x, -15f, 15f);
             transform.eulerAngles = new Vector2(0, rotation.y) * lookSpeed;
             Camera.main.transform.localRotation = Quaternion.Euler(rotation.x * lookSpeed, 0, 0);
+        }
+
+        void Interact()
+        {
+            Vector3 origin = Camera.main.transform.position;
+            Vector3 direction = Camera.main.transform.forward;
+            float distance = 3f;
+            RaycastHit hit;
+
+            if(Physics.Raycast(origin, direction, out hit, distance))
+            {
+                if (hit.collider.CompareTag("Vial"))
+                {
+                    Debug.Log(hit);
+
+                    if (Input.GetKeyDown(KeyCode.E) && isHeld == false)
+                    {
+                        vial = hit.collider.gameObject;
+                        vial.transform.position = holdPos.position;
+                        vial.transform.rotation = holdPos.rotation;
+                        vial.transform.SetParent(holdPos);
+                        vial.GetComponent<CapsuleCollider>().enabled = false;
+                        vial.GetComponent<Rigidbody>().isKinematic = true;
+                        isHeld = true;
+                    }
+                    else
+                    {
+                        isHeld = false;
+                    }
+                }
+            }
+
+            if(Input.GetKeyDown(KeyCode.Q) && isHeld == true)
+            {
+                vial.transform.SetParent(null);
+                vial.GetComponent<CapsuleCollider>().enabled = true;
+                vial.GetComponent<Rigidbody>().isKinematic = false;
+                vial = null;
+
+            }
+
+
         }
     }
 }
