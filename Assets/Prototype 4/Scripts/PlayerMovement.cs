@@ -16,6 +16,8 @@ namespace Prototype4
         public GameObject vial;
         bool isHeld;
 
+        public NumberCheck useCauldron;
+
         void Start()
         {
 
@@ -56,7 +58,7 @@ namespace Prototype4
             {
                 if (hit.collider.CompareTag("Vial"))
                 {
-                    Debug.Log(hit);
+                    Debug.Log(hit.collider.name);
 
                     if (Input.GetKeyDown(KeyCode.E) && isHeld == false)
                     {
@@ -71,6 +73,15 @@ namespace Prototype4
                     else
                     {
                         isHeld = false;
+                    }
+                }
+                
+                if(hit.collider.CompareTag("Cauldron"))
+                {
+                    Debug.Log(hit.collider.name);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        useCauldron.CheckAnswer();
                     }
                 }
             }
