@@ -33,7 +33,7 @@ public class ObstacleMovement : Singleton<ObstacleMovement>
 
     }
 
-    void UpdateSpeed()
+    public void UpdateSpeed()
     {
         currentSpeed = speed;
     }

@@ -31,9 +31,9 @@ public class Pickups : JMC
         if(other.CompareTag("Player"))
         {
             Vector3 punch = new Vector3(1.5f, 1.5f, 1.5f);
+            _OM.SpeedUp();
             gameObject.transform.DOPunchScale(punch, 0.1f, 5, 0);
             cam.DOFieldOfView(170, 3).SetEase(ease);
-            _OM.SpeedUp();
             Destroy(this.gameObject, 0.2f);
         }
     }

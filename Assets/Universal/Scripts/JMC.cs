@@ -19,6 +19,8 @@ public class JMC : MonoBehaviour
 
     protected static ObstacleMovement _OM { get { return ObstacleMovement.instance; } }
 
+    protected static Prototype4.UIManager _UI4 { get { return Prototype4.UIManager.instance; } }
+
 
 
 

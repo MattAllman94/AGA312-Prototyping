@@ -113,7 +113,7 @@ MonoBehaviour:
   currentSpeed: 15
   speed: 15
   posLimit: -5
-  ease: 5
+  ease: 1
 --- !u!114 &-7832506369473950926
 MonoBehaviour:
   m_ObjectHideFlags: 0
