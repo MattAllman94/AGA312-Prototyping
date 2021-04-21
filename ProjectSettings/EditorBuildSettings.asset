@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Prototype 1/Scenes/Scene.unity
-    guid: dc8c9f3efd746429fa6f9482dc779492
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Universal/Scenes/Title.unity
+    guid: 722407b0969cd604e86cc7759cd6264d
+  - enabled: 1
     path: Assets/Prototype 2/Scenes/Root Simulator.unity
     guid: 506fbd66cdea54445a06e503fc01c82c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Prototype 3/Scenes/Meteor Dodge.unity
     guid: 141914712532ef649b0dac82b2a2a5b1
   - enabled: 1

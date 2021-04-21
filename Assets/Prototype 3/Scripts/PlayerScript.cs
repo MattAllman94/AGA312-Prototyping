@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
 
     public float slideSpeed;
+    public bool godMode;
 
     void Update()
     {
@@ -35,14 +36,27 @@ public class PlayerScript : MonoBehaviour
                 transform.localPosition = newPos;
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            godMode = true;
+        }
+        else
+        {
+            godMode = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Obstacle"))
+        if(!godMode)
         {
-            Debug.Log("Game Over");
-            Time.timeScale = 0;
+            if (collision.gameObject.CompareTag("Obstacle"))
+            {
+                Debug.Log("Game Over");
+                Time.timeScale = 0;
+            }
         }
+
     }
 }

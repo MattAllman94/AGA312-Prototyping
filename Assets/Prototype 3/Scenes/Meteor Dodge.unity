@@ -369,15 +369,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febcab7a5dc0639469c30c3e7c4b1e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   obstacle: {fileID: 9159504752802439240, guid: c99a29def630b9843ae7000d80f68bf3, type: 3}
   currentNumber: 0
   spawnRate: 0.05
   currentSpawnRate: 0
+  obstacles: []
   pickup:
   - {fileID: 5591275396621010741, guid: 9b93c56976bc4494bbc67eb099c86ca1, type: 3}
   - {fileID: 5164622295114802866, guid: 56267533e12f77d499aecff9bf0aa31c, type: 3}
   pickupSpawnRate: 1
   currentPickupSpawnRate: 0
+  currentSpeed: 15
+  speed: 15
+  defaultSpeed: 15
+  ease: 1
 --- !u!1 &707269866
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,7 +947,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 0720e0dbd866d364a8611ee0ac10940c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1000,6 +1006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slideSpeed: 15
+  godMode: 0
 --- !u!1 &1949934625
 GameObject:
   m_ObjectHideFlags: 0

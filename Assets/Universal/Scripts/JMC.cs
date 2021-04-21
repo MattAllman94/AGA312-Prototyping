@@ -17,8 +17,6 @@ public class JMC : MonoBehaviour
 
     protected static Prototype3.SpawnManager _SM3 { get { return Prototype3.SpawnManager.instance; } }
 
-    protected static ObstacleMovement _OM { get { return ObstacleMovement.instance; } }
-
     protected static Prototype4.UIManager _UI4 { get { return Prototype4.UIManager.instance; } }
 
 

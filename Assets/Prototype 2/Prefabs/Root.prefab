@@ -204,5 +204,6 @@ MonoBehaviour:
   worldAnchor: {fileID: 0}
   myAnchor: {fileID: 0}
   rootTip: {fileID: 284300987}
+  maxDrag: 2
   isLocked: 0
   lockedColor: {r: 0.3018868, g: 0.15238501, b: 0.06123176, a: 0}

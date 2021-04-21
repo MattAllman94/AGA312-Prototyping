@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class ObstacleMovement : Singleton<ObstacleMovement>
+public class ObstacleMovement : JMC
 {
-    public float currentSpeed;
-    public float speed;
-    public float posLimit;
-    public Ease ease;
 
+    public float posLimit;
 
     void Start()
     {
@@ -18,23 +15,14 @@ public class ObstacleMovement : Singleton<ObstacleMovement>
 
     void Update()
     {
-        transform.Translate(Vector3.back * Time.deltaTime * speed);
+        transform.Translate(Vector3.back * Time.deltaTime * _SM3.currentSpeed);
 
         if (transform.position.z < posLimit)
         {
             Destroy(gameObject);
-            _SM3.currentNumber -= 1;
+            _SM3.obstacles.Remove(this);
         }
     }
 
-    public void SpeedUp()
-    {
-        DOTween.To(() => speed, x => speed = x, 40, 3).SetEase(ease).OnUpdate(UpdateSpeed);
 
-    }
-
-    public void UpdateSpeed()
-    {
-        currentSpeed = speed;
-    }
 }

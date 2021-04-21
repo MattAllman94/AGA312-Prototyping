@@ -10,6 +10,7 @@ public class RootScript : JMC
     public Transform myAnchor;
     public Transform rootTip;
 
+
     private Camera mainCamera;
     private float camToDist;
     private Vector3 initialScale;
@@ -40,7 +41,7 @@ public class RootScript : JMC
             Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(mouseScreenPos);
 
             float dist = Vector3.Distance(worldAnchor.position, mouseWorldPos);
-            transform.localScale = new Vector3(initialScale.x, dist / 2f, initialScale.z);
+            transform.localScale = new Vector3(initialScale.x, -dist / 2f, initialScale.z);
 
             Vector3 middlePoint = (worldAnchor.position + mouseWorldPos) / 2f;
             transform.position = middlePoint;
@@ -48,7 +49,8 @@ public class RootScript : JMC
             Vector3 rotationDirection = (mouseWorldPos - worldAnchor.position);
             transform.up = rotationDirection;
 
-            rootTip.position = mainCamera.ScreenToWorldPoint(mouseScreenPos);            
+            rootTip.position = mainCamera.ScreenToWorldPoint(mouseScreenPos);
+
         }
     }
 
